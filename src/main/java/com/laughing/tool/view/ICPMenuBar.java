@@ -1,6 +1,9 @@
 package com.laughing.tool.view;
 
 
+import org.jb2011.lnf.beautyeye.ch9_menu.BEMenuItemUI;
+import org.jb2011.lnf.beautyeye.ch9_menu.BEMenuUI;
+
 import javax.swing.*;
 import javax.swing.undo.UndoManager;
 
@@ -27,7 +30,16 @@ public class ICPMenuBar extends JMenuBar {
     private final UndoManager undoManager = new UndoManager();
 
     public ICPMenuBar() {
-
+        fileMenu.setUI(new BEMenuUI());
+        editorMenu.setUI(new BEMenuUI());
+        helpMenu.setUI(new BEMenuUI());
+        openFile.setUI(new BEMenuItemUI());
+        saveFile.setUI(new BEMenuItemUI());
+        exist.setUI(new BEMenuItemUI());
+        undo.setUI(new BEMenuItemUI());
+        help.setUI(new BEMenuItemUI());
+        log.setUI(new BEMenuItemUI());
+        about.setUI(new BEMenuItemUI());
     }
 
     /**

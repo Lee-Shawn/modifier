@@ -4,6 +4,9 @@ package com.laughing.tool.view;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.laughing.tool.common.Constant;
 import com.laughing.tool.controller.ICPController;
+import org.jb2011.lnf.beautyeye.ch14_combox.BEComboBoxUI;
+import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
+import org.jb2011.lnf.beautyeye.ch6_textcoms.BETextFieldUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -82,24 +85,27 @@ public class ICPPanel extends JPanel {
         String[] moduleList = new String[]{"easc", "esip", "ivps", "ksrs", "mif", "msip", "rtds", "scmd", "sif"};
         module = new JComboBox<>(moduleList);
         module.setBounds(Constant.X * 4, Constant.Y * 3, Constant.WIDTH * 2, Constant.HEIGHT);
+        module.setUI(new BEComboBoxUI());
         panel.add(module);
         // IP
         ipLabel.setBounds(Constant.X * 2, Constant.Y * 4, Constant.WIDTH, Constant.HEIGHT);
         panel.add(ipLabel);
         ip.setBounds(Constant.X * 4, Constant.Y * 4, Constant.WIDTH * 3, Constant.HEIGHT);
         ip.setFont(new Font(null, Font.PLAIN, Constant.SIZE));
+        ip.setUI(new BETextFieldUI());
         panel.add(ip);
         // 端口
         portLabel.setBounds(Constant.X * 2, Constant.Y * 5, Constant.WIDTH, Constant.HEIGHT);
         panel.add(portLabel);
         port.setBounds(Constant.X * 4, Constant.Y * 5, Constant.WIDTH * 3, Constant.HEIGHT);
         port.setFont(new Font(null, Font.PLAIN, Constant.SIZE));
+        port.setUI(new BETextFieldUI());
         panel.add(port);
         // 模式
         modeLabel.setBounds(Constant.X * 2, Constant.Y * 6, Constant.WIDTH * 2, Constant.HEIGHT);
         panel.add(modeLabel);
-        //Integer[] modeList = new Integer[]{0, 1};
         mode = new JComboBox<>();
+        mode.setUI(new BEComboBoxUI());
         panel.add(mode);
         mode.addItem("--请选择--");
         mode.addItem("0");
@@ -111,6 +117,7 @@ public class ICPPanel extends JPanel {
         panel.add(moduleNumLabel);
         moduleNum.setBounds(Constant.X * 4, Constant.Y * 7, Constant.WIDTH * 3, Constant.HEIGHT);
         moduleNum.setFont(new Font(null, Font.PLAIN, Constant.SIZE));
+        moduleNum.setUI(new BETextFieldUI());
         panel.add(moduleNum);
         // handMode
         handModeLabel.setBounds(Constant.X * 2, Constant.Y * 8, Constant.WIDTH * 2, Constant.HEIGHT);
@@ -121,24 +128,28 @@ public class ICPPanel extends JPanel {
         handMode.addItem("0");
         handMode.addItem("1");
         handMode.setBounds(Constant.X * 4, Constant.Y * 8, Constant.WIDTH * 2, Constant.HEIGHT);
+        handMode.setUI(new BEComboBoxUI());
         panel.add(handMode);
         // 组编号
         groupLabel.setBounds(Constant.X * 2, Constant.Y * 9, Constant.WIDTH * 2, Constant.HEIGHT);
         panel.add(groupLabel);
         group.setBounds(Constant.X * 4, Constant.Y * 9, Constant.WIDTH * 3, Constant.HEIGHT);
         group.setFont(new Font(null, Font.PLAIN, Constant.SIZE));
+        group.setUI(new BETextFieldUI());
         panel.add(group);
         // 昵称
         nickNameLabel.setBounds(Constant.X * 2, Constant.Y * 10, Constant.WIDTH * 2, Constant.HEIGHT);
         panel.add(nickNameLabel);
         nickName.setBounds(Constant.X * 4, Constant.Y * 10, Constant.WIDTH * 3, Constant.HEIGHT);
         nickName.setFont(new Font(null, Font.PLAIN, Constant.SIZE));
+        nickName.setUI(new BETextFieldUI());
         panel.add(nickName);
         // 对端功能块号 TODO 有些模块不需要配置
         funcNumLabel.setBounds(Constant.X * 2, Constant.Y * 11, Constant.WIDTH * 2, Constant.HEIGHT);
         panel.add(funcNumLabel);
         funcNum.setBounds(Constant.X * 4, Constant.Y * 11, Constant.WIDTH * 3, Constant.HEIGHT);
         funcNum.setFont(new Font(null, Font.PLAIN, Constant.SIZE));
+        funcNum.setUI(new BETextFieldUI());
         panel.add(funcNum);
         // 保存文件
         pathLabel.setBounds(Constant.X * 2, Constant.Y * 12, Constant.WIDTH * 2, Constant.HEIGHT);
@@ -146,14 +157,18 @@ public class ICPPanel extends JPanel {
         message.setBounds(Constant.X * 3 + 20, Constant.Y * 12, Constant.WIDTH * 4, Constant.HEIGHT);
         message.setFont(new Font(null, Font.PLAIN, Constant.SIZE));
         message.setText("未选择路径");
+        message.setUI(new BETextFieldUI());
         panel.add(message);
         path.setBounds(Constant.X * 6, Constant.Y * 12, Constant.WIDTH + 10, Constant.HEIGHT);
+        path.setUI(new BEButtonUI());
         panel.add(path);
         // 添加
         add.setBounds(Constant.X * 2 + 50, Constant.Y * 13, Constant.WIDTH + 10, Constant.HEIGHT * 2);
+        add.setUI(new BEButtonUI());
         panel.add(add);
         // 保存
         save.setBounds(Constant.X * 4 + 50, Constant.Y * 13, Constant.WIDTH + 10, Constant.HEIGHT * 2);
+        save.setUI(new BEButtonUI());
         panel.add(save);
         // 背景图片
         imageLabel.setIcon(image);
