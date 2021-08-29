@@ -130,7 +130,7 @@ public class ICPMenuBar extends JMenuBar {
         about.addActionListener(e -> {
             String message = "Version: V1.0.2\n" +
                     "Auth: liyunjie@eastcom.com\n" +
-                    "GitHub: https://github.com/Lee-Shawn\n" +
+                    "GitHub: https://github.com/Lee-Shawn/modifier\n" +
                     "Copyright: eastcom 2021";
             JOptionPane.showMessageDialog(null, message,"关于",JOptionPane.INFORMATION_MESSAGE);
         });
