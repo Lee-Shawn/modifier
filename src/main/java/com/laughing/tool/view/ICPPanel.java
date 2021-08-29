@@ -46,10 +46,11 @@ public class ICPPanel extends JPanel {
     private final JLabel pathLabel = new JLabel("文件保存路径：");
     private final JTextField message = new JTextField(30);
     private final JButton path = new JButton("浏览");
-    private final ImageIcon image = new ImageIcon(Objects.requireNonNull(ICPPanel.class.getClassLoader().getResource("image/img.png")));
+    private final ImageIcon image = new ImageIcon(Objects.requireNonNull(ICPPanel.class.getClassLoader().getResource("image/2.png")));
     final JLabel imageLabel = new JLabel();
 
     List<List<String>> list = new ArrayList<>();
+    String moduleText;
     String modeText = "--请选择--";
     String handModeText = "--请选择--";
     String filePath;
@@ -191,6 +192,16 @@ public class ICPPanel extends JPanel {
      * 添加数据事件
      */
     private void addDataListener() {
+        module.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                moduleText = Objects.requireNonNull(module.getSelectedItem()).toString();
+                if ("esip".equals(moduleText) || "ivps".equals(moduleText) || "ksrs".equals(moduleText) || "rtds".equals(moduleText)) {
+                    funcNum.setText("");
+                } else {
+                    funcNum.setText("该模块不用填写");
+                }
+            }
+        });
         mode.addItemListener(e1 -> {
             if (e1.getStateChange() == ItemEvent.SELECTED) {
                 modeText = Objects.requireNonNull(mode.getSelectedItem()).toString();
@@ -231,7 +242,10 @@ public class ICPPanel extends JPanel {
                 data.add(portText);
                 data.add(modeText);
                 data.add(moduleNumText);
-                data.add(funcNumText);
+                if ("esip".equals(moduleText) || "ivps".equals(moduleText) || "ksrs".equals(moduleText) || "rtds".equals(moduleText)) {
+                    System.out.println(moduleText);
+                    data.add(funcNumText);
+                }
                 data.add(handModeText);
                 data.add(groupText);
                 data.add(nickNameText);
@@ -270,11 +284,12 @@ public class ICPPanel extends JPanel {
                     JOptionPane.showMessageDialog(null, "请先添加配置再生成！", "错误", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                filePath = message.getText();
+                /*filePath = message.getText();
                 File file = new File(filePath);
                 if (!file.isDirectory()) {
                     JOptionPane.showMessageDialog(null, "路径不存在！", "错误", JOptionPane.ERROR_MESSAGE);
-                } else if (filePath == null || "".equals(filePath)) {
+                } else */
+                if (filePath == null || "".equals(filePath)) {
                     JOptionPane.showMessageDialog(null, "请选择文件保存路径！", "错误", JOptionPane.ERROR_MESSAGE);
                 } else {
                     controller.writeFile(list, filePath);
