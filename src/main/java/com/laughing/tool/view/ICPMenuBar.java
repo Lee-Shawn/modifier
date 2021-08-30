@@ -132,7 +132,8 @@ public class ICPMenuBar extends JMenuBar {
                     "1. fix下拉框第一次选择无法获取数据问题\n\n";
             String msg3 = "V1.0.2\n" +
                     "1. 添加背景图片优化UI\n" +
-                    "2. fix手动添加路径问题\n\n";
+                    "2. fix手动添加路径问题\n" +
+                    "3. 增加IP地址合法性判断\n\n";
             String message = msg3 + msg2 + msg1;
             JOptionPane.showMessageDialog(null, message,"日志",JOptionPane.INFORMATION_MESSAGE);
         });

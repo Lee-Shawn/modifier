@@ -3,6 +3,7 @@ package com.laughing.tool.view;
 
 import com.laughing.tool.common.Constant;
 import com.laughing.tool.controller.ICPController;
+import com.laughing.tool.util.Tools;
 import org.jb2011.lnf.beautyeye.ch14_combox.BEComboBoxUI;
 import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
 import org.jb2011.lnf.beautyeye.ch6_textcoms.BETextFieldUI;
@@ -49,7 +50,7 @@ public class ICPPanel extends JPanel {
     final JLabel imageLabel = new JLabel();
 
     List<List<String>> list = new ArrayList<>();
-    String moduleText;
+    String moduleText = "--请选择--";
     String modeText = "--请选择--";
     String handModeText = "--请选择--";
     String filePath;
@@ -71,7 +72,7 @@ public class ICPPanel extends JPanel {
         // 模块
         moduleLabel.setBounds(Constant.X * 2, Constant.Y * 3, Constant.WIDTH, Constant.HEIGHT);
         panel.add(moduleLabel);
-        String[] moduleList = new String[]{"easc", "esip", "ivps", "ksrs", "mif", "msip", "rtds", "scmd", "sif"};
+        String[] moduleList = new String[]{"--请选择--", "easc", "esip", "ivps", "ksrs", "mif", "msip", "rtds", "scmd", "sif"};
         module = new JComboBox<>(moduleList);
         module.setBounds(Constant.X * 4, Constant.Y * 3, Constant.WIDTH * 2, Constant.HEIGHT);
         module.setUI(new BEComboBoxUI());
@@ -203,14 +204,19 @@ public class ICPPanel extends JPanel {
         add.addActionListener(e -> {
             List<String> data = new ArrayList<>();
             String ipText = ip.getText();
+            boolean verify = Tools.verifyIP(ipText);
             String portText = port.getText();
             String moduleNumText = moduleNum.getText();
             String groupText = group.getText();
             String nickNameText = nickName.getText();
             String funcNumText = funcNum.getText();
 
-            if (ipText == null || "".equals(ipText)) {
+            if ("--请选择--".equals(moduleText)) {
+                JOptionPane.showMessageDialog(null, "模块不能为空！", "错误", JOptionPane.ERROR_MESSAGE);
+            } else if (ipText == null || "".equals(ipText)) {
                 JOptionPane.showMessageDialog(null, "IP不能为空！", "错误", JOptionPane.ERROR_MESSAGE);
+            } else if (!verify) {
+                JOptionPane.showMessageDialog(null, "IP地址不合法！", "错误", JOptionPane.ERROR_MESSAGE);
             } else if (portText == null || "".equals(portText)) {
                 JOptionPane.showMessageDialog(null, "端口不能为空！", "错误", JOptionPane.ERROR_MESSAGE);
             } else if ("--请选择--".equals(modeText)) {

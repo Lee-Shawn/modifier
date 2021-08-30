@@ -1,7 +1,6 @@
 package com.laughing.tool.view;
 
 
-import com.formdev.flatlaf.FlatLightLaf;
 import com.laughing.tool.common.Constant;
 import javax.swing.*;
 import java.awt.*;
@@ -41,7 +40,7 @@ public class ICPFrame extends JFrame {
         menuBar.initMenu(menuBar);
         menuBar.listener();
         // 左上角和系统托盘图标
-        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("image/title.jpeg")));
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("image/title.png")));
         // 获取面板，显示图片
         this.getLayeredPane().add(icpPanel.imageLabel, new Integer(Integer.MIN_VALUE));
         JPanel container = (JPanel) this.getContentPane();
