@@ -24,7 +24,7 @@ public class ICPFrame extends JFrame {
         // 窗口位置
         this.setLocationRelativeTo(null);
         // 窗口标题
-        this.setTitle("ICP通道配置工具箱 V1.0.2");
+        this.setTitle("ICP通道配置器");
         // 显示窗口
         this.setVisible(true);
         // 设置窗口大小不可变
