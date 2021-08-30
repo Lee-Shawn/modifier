@@ -1,6 +1,7 @@
 package com.laughing.tool.view;
 
 
+import com.formdev.flatlaf.FlatLightLaf;
 import com.laughing.tool.common.Constant;
 import javax.swing.*;
 import java.awt.*;
@@ -39,6 +40,8 @@ public class ICPFrame extends JFrame {
         this.setJMenuBar(menuBar);
         menuBar.initMenu(menuBar);
         menuBar.listener();
+        // 左上角和系统托盘图标
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("image/title.jpeg")));
         // 获取面板，显示图片
         this.getLayeredPane().add(icpPanel.imageLabel, new Integer(Integer.MIN_VALUE));
         JPanel container = (JPanel) this.getContentPane();
@@ -65,6 +68,22 @@ public class ICPFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(ICPFrame::new);
+        SwingUtilities.invokeLater(() -> {
+            // 修改swing外观
+            try {
+                /*for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                        break;
+                    }
+                }*/
+                //UIManager.setLookAndFeel(new FlatLightLaf());
+                org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
+                UIManager.put("RootPane.setupButtonVisible", false);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            new ICPFrame();
+        });
     }
 }

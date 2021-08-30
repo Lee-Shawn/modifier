@@ -1,7 +1,6 @@
 package com.laughing.tool.view;
 
 
-import com.formdev.flatlaf.FlatLightLaf;
 import com.laughing.tool.common.Constant;
 import com.laughing.tool.controller.ICPController;
 import org.jb2011.lnf.beautyeye.ch14_combox.BEComboBoxUI;
@@ -46,7 +45,7 @@ public class ICPPanel extends JPanel {
     private final JLabel pathLabel = new JLabel("文件保存路径：");
     private final JTextField message = new JTextField(30);
     private final JButton path = new JButton("浏览");
-    private final ImageIcon image = new ImageIcon(Objects.requireNonNull(ICPPanel.class.getClassLoader().getResource("image/2.png")));
+    private final ImageIcon image = new ImageIcon(Objects.requireNonNull(ICPPanel.class.getClassLoader().getResource("image/bg.png")));
     final JLabel imageLabel = new JLabel();
 
     List<List<String>> list = new ArrayList<>();
@@ -58,18 +57,7 @@ public class ICPPanel extends JPanel {
     ICPController controller = new ICPController();
 
     public ICPPanel() {
-        // 修改swing外观
-        try {
-            /*for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }*/
-            UIManager.setLookAndFeel(new FlatLightLaf());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 
     /**
